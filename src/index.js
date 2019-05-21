@@ -5,4 +5,4 @@ import App from './components/App';
  
 
 
-ReactDOM.render(<App name="Katze" />, document.getElementById('root'));
+ReactDOM.render(<App ask="How you doin?" />, document.getElementById('root'));
