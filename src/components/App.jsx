@@ -6,16 +6,14 @@ import './button-styles.css';
 // }
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             text: "",
             hasLoaded: false,
-            placeholder: "{this.state.text}"   //This can go within input OR here, right?
+            placeholder: "{this.state.text}"
         };
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-
+        // this.handleClick = this.handleClick.bind(this); //This not necessary bc of arrow functions below
     }
 
     handleChange(e) {
@@ -23,11 +21,11 @@ class App extends React.Component {
     }
 
     handleClick() {
-        this.setState({ hasLoaded: true });    // Is this correct?
+        this.setState({ hasLoaded: true });
     }
 
     componentDidMount() {
-        this.hasLoaded = true
+        this.setState({ hasLoaded: true });
     }
 
     render() {
@@ -37,14 +35,14 @@ class App extends React.Component {
                     <h1>Your buddy asks: {this.props.ask}</h1>
                     <h1>And you answer with: {this.state.text}</h1>
                     <input value={this.state.text} onChange={(e) => this.handleChange(e)} />
-                    <button onClick={(e) => this.handleClick(e)}>Respond</button>
+                    <button onClick={() => this.handleClick()}>Respond</button>
                 </>
             )
         } else {
             return (
                 <>
                     <h1>Loading...</h1>
-                    <button onClick={this.handleClick}>Load it up!</button>
+                    <button onClick={() => this.handleClick()}>Load it up!</button>
                 </>
             )
         }
