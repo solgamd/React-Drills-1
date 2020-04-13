@@ -1,9 +1,7 @@
 import React from 'react';
 import './button-styles.css';
+import "./text-styles.css";
 
-// const App = (props) => {
-//     return <h1>{props.name}</h1>;
-// }
 
 class App extends React.Component {
     constructor(props) {
@@ -14,10 +12,6 @@ class App extends React.Component {
             placeholder: "{this.state.text}"
         };
         // this.handleClick = this.handleClick.bind(this); //This not necessary bc of arrow functions below
-    }
-
-    handleChange(e) {
-        this.setState({ text: e.target.value });
     }
 
     handleClick() {
@@ -33,8 +27,8 @@ class App extends React.Component {
             return (
                 <>
                     <h1>Your buddy asks: {this.props.ask}</h1>
-                    <h1>And you answer with: {this.state.text}</h1>
-                    <input value={this.state.text} onChange={(e) => this.handleChange(e)} />
+                    <h1>And you answer: {this.state.text}</h1>
+                    <input value={this.state.text} onChange={(e => this.setState( {text: e.target.value} ))} />
                     <button onClick={() => this.handleClick()}>Respond</button>
                 </>
             )
